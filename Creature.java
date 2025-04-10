@@ -7,7 +7,7 @@
  * the creature is alive or knocked out. The creature is also responsible for calculating
  * damage delivered based on the creature's strength (1 to str) 
  * 
- * @author Crosbie
+ * @author Brandon Magistrado
  * @version 2025-04 v1.0
  */
 // we will learn what the abstract keyword does in a later chapter
@@ -38,9 +38,11 @@ public abstract class Creature
      * Allows a creature to determine how much damage it is causing in this round of battle
      * @return a value between 1 and str to be used to cause damage to another creature
      */
-    public int attack(){
+    public int attack()
+    {
         // TODO: implement a damage method
-        return 0;
+        int damage = Randomizer.nextInt(str);
+        return damage;
     }
     
     
@@ -50,7 +52,11 @@ public abstract class Creature
      */
     public boolean isAlive() {
         // TODO: implement a method to report if the creature yet lives
-        return false; //change this
+        if(hp > 0)
+        {
+            return true;
+        }
+        return false;
     }
     
     /**
@@ -59,7 +65,11 @@ public abstract class Creature
      */
     public boolean isKnockedOut() {
         //TODO: implement a method to report if the creature has been killed
-        return false; //change this
+        if(hp <= 0)
+        {
+            return true;
+        }
+        return false;
     }
     
     
@@ -68,8 +78,38 @@ public abstract class Creature
      * the current total of hit points
      * @param damage value to remove from hit point count
      */
-    public void takeDamage(int damage) {
+    public void takeDamage(int damage) 
+    {
         // TODO: implement this
+        hp -= damage;
+    }
+    
+    /**
+     * gives the health points for the creature
+     * @return returns hp which is the health int for a creature
+     */
+    public int getHealth()
+    {
+        return hp;
+    }
+    
+    /**
+     * gives the strength points for the creature
+     * @return returns str which is the strength int for a creature
+     */
+    public int getStrength()
+    {
+        return str;
+    }
+    
+    /**
+     * gives the name string for the creature
+     * @return returns creature which is the creature name string for a creature
+     */
+    public String whatCreature()
+    {
+        String creature = "hi";
+        return creature;
     }
     
 }
